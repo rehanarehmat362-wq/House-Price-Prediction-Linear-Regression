@@ -1,79 +1,60 @@
-# House Price Prediction — Professional Project Package
+# House Price Prediction using Linear Regression
 
-## Project status
-**Portfolio / technical demonstration only. Not production-ready for real property valuation.**
+## Project Overview
+This project demonstrates an end-to-end Machine Learning workflow to predict house prices using Python and Linear Regression.
 
-The supplied data are synthetic and were generated programmatically for learning. No real property transaction or listing data were provided. The model outputs must not be presented as verified market prices.
+The model uses property features to estimate house prices in million PKR.
 
-## What is included
-- `notebook/House_Price_Prediction_Professional.ipynb` — cleaned, structured, reproducible notebook with explicit limitations.
-- `notebook/Original_Uploaded_Notebook.ipynb` — original notebook uploaded for review.
-- `data/house_prices_synthetic.csv` — 180 generated records; six input features and one target.
-- `figures/` — price distribution, actual-vs-predicted, residual, and correlation plots.
-- `outputs/model_evaluation.csv` — held-out test metrics.
-- `outputs/test_set_predictions.csv` — actual/predicted comparison and absolute error.
-- `outputs/permutation_importance.csv` — permutation-based model interpretation.
-- `outputs/example_prediction.csv` — illustrative example input and output.
-- `model/linear_regression_model.pkl` — trained scikit-learn model.
-- `train_model.py` — reproducible training script.
+## Features Used
+- Area (square feet)
+- Number of bedrooms
+- Number of bathrooms
+- House age
+- Location score
+- Parking spaces
 
-## Dataset fields
-- `area_sqft`: area in square feet
-- `bedrooms`: bedroom count
-- `bathrooms`: bathroom count
-- `house_age_years`: age in years
-- `location_score`: synthetic ordinal score from 1 to 10 (not a defined real-world location index)
-- `parking_spaces`: number of parking spaces
-- `price_million_pkr`: generated target in million PKR
+## Project Workflow
+- Dataset creation and preparation
+- Data inspection and cleaning
+- Exploratory Data Analysis (EDA)
+- Data visualization
+- Train-test split
+- Linear Regression model training
+- Prediction and evaluation
+- Model saving and loading
 
-## Reproduced evaluation
-| Metric | Value |
+## Model Evaluation
+
+| Metric | Result |
 |---|---:|
 | MAE | 2.2178 million PKR |
-| MSE | 8.3129 (million PKR)^2 |
 | RMSE | 2.8832 million PKR |
-| R² | 0.9737 |
+| R² Score | 0.9737 |
 
-These figures are based only on a random 20% holdout from the generated dataset. They are not estimates of real-world market performance.
+## Visualizations
+- Price distribution
+- Actual vs Predicted prices
+- Residual plot
+- Correlation matrix
 
-## Environment
-Python 3.10+ recommended. Install dependencies:
-```bash
-python -m pip install numpy pandas matplotlib scikit-learn joblib jupyter
-```
-Open the notebook with:
-```bash
-jupyter notebook notebook/House_Price_Prediction_Professional.ipynb
-```
-Run the training script from the project root:
-```bash
-python train_model.py
-```
+## Tools & Libraries
+Python, NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Jupyter Notebook.
 
-## Example model use
-```python
-import joblib
-import pandas as pd
+## Project Files
+- `House_Price_Prediction_Professional.ipynb` — main notebook
+- `Original_Uploaded_Notebook.ipynb` — original notebook
+- `house_prices_synthetic.csv` — dataset
+- `Project_Report.pdf` — technical report
+- `actual_vs_predicted.png` — prediction visualization
+- `correlation_matrix.png` — feature correlation
+- `price_distribution.png` — price distribution
+- `residual_plot.png` — residual diagnostic
+- `linear_regression_model.pkl` — trained model
+- `train_model.py` — training script
+- Evaluation CSV files — metrics, predictions, and permutation importance
 
-model = joblib.load("model/linear_regression_model.pkl")
-house = pd.DataFrame([{
-    "area_sqft": 2000,
-    "bedrooms": 3,
-    "bathrooms": 2,
-    "house_age_years": 5,
-    "location_score": 8,
-    "parking_spaces": 1
-}])
-print(model.predict(house)[0], "million PKR")
-```
-The output is illustrative only.
+## Important Limitation
+The dataset is synthetic and programmatically generated for learning and demonstration purposes. The reported metrics reflect performance on a test split of this synthetic dataset and do not represent validated real-world house price prediction accuracy.
 
-## Required work before a real client engagement
-1. Replace the synthetic dataset with authorized, verified property data.
-2. Define scope and target geography/property segment.
-3. Validate data quality and prevent leakage.
-4. Establish a defensible validation design and benchmark.
-5. Evaluate segment-wise error and out-of-time performance.
-6. Review fairness, privacy, data licensing, and applicable legal requirements.
-7. Have a real-estate domain expert review the methodology and outputs.
-8. Agree on acceptance criteria and disclaimers with the client.
+## Author
+Machine Learning learner building practical Python and AI projects.
